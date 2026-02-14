@@ -15,6 +15,9 @@ public interface UserDao {
     @Query("SELECT * FROM User WHERE login = :login AND password = :password LIMIT 1")
     User login(String login, String password);
 
+    @Query("UPDATE User SET role = :role WHERE email = :email")
+    void updateUserRole(String email, String role);
+
     @Query("SELECT * FROM User WHERE id = :id")
     User getById(int id);
 }

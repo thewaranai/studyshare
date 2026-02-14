@@ -2,6 +2,7 @@ package com.example.studyshare.ui;
 
 import android.os.Bundle;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,6 +23,22 @@ public class RegisterActivity extends AppCompatActivity {
         loginEt = findViewById(R.id.loginEt);
         emailEt = findViewById(R.id.emailEt);
         passEt = findViewById(R.id.passEt);
+        TextView adminSecretTitle = findViewById(R.id.adminSecretTitle);
+
+        adminSecretTitle.setOnLongClickListener(v -> {
+            String email = emailEt.getText().toString().trim();
+
+            if (email.isEmpty()) {
+                Toast.makeText(this, "Введите email пользователя", Toast.LENGTH_SHORT).show();
+                return true;
+            }
+
+            AppDatabase db = AppDatabase.getInstance(this);
+            db.userDao().updateUserRole(email, "MODERATOR");
+
+            Toast.makeText(this, "Пользователь назначен MODERATOR", Toast.LENGTH_LONG).show();
+            return true;
+        });
 
         findViewById(R.id.registerBtn).setOnClickListener(v -> {
             String login = loginEt.getText().toString();

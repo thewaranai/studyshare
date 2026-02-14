@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <EditText
         android:id="@+id/loginEt"
         android:hint="Логин"
@@ -25,7 +26,7 @@
 
     <Button
         android:id="@+id/registerBtn"
-        android:text="Регистрация"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:text="Регистрация" />
 </LinearLayout>
